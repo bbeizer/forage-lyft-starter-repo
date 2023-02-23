@@ -1,4 +1,4 @@
-from engine import Engine
+from engine.engine import Engine
 from battery import Battery
 
 class Car(Engine, Battery):
@@ -7,11 +7,5 @@ class Car(Engine, Battery):
         self.battery = battery
         self.tire = tire
 
-    def battery_needs_service(self):
-        return self.battery.battery_needs_service()
-
-    def engine_needs_service(self):
-        return self.engine.engine_needs_service()
-
     def needs_service(self):
-        return self.engine_needs_service() or self.battery_needs_service() or self.tire_needs_service()
+        return self.battery.needs_service() or self.engine.needs_service()
